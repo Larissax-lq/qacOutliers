@@ -98,6 +98,7 @@ print.univOutliers(object)
 
 The Grubbs' Test is a simple technique that iteratively identifies outliers by testing the hypothesis that the largest or smallest value is an outlier. The Grubbs’ test requires the data to be normally distributed because it relies on mean and standard deviation. 
 
+
 ```{r}
 # TO TEST NORMAL DIST W OUTLIER FOR GRUBBS
 set.seed(42)
@@ -107,12 +108,6 @@ data_frame <- data.frame(values = data_with_outlier)
 object_normal_outlier <- univOutliers(data = data_frame, x = "values", method = "grubbs")
 #plot(object_normal_outlier)  # Plotting the object with the outlier
 print(object_normal_outlier)  # Printing the outliers and methods
-```
-
-```{r}
-object3 <- univOutliers(data = mtcars, x = "carb", method = "grubbs")
-#plot(object3)  # Plotting the object with 'mtcars' dataset
-print(object3)  # Printing the outliers and methods
 ```
 
 The output of Grubbs' test will provide the identified outliers and the corresponding row numbers. This method uses a Shapiro-Wilk test (shapiro.test) for normality. If the p-value of the normality test is less than 0.05, it issues a warning about normality because a high p-value could affect the accuracy of the Grubbs' Test.
